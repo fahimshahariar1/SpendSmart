@@ -8,9 +8,13 @@ namespace SpendSmart.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly SpendSmartDbContext _context;
+
+        public HomeController(ILogger<HomeController> logger, SpendSmartDbContext _context)
         {
             _logger = logger;
+
+            _context = _context;
         }
 
         public IActionResult Index()
@@ -21,7 +25,8 @@ namespace SpendSmart.Controllers
 
         public IActionResult Expenses()
         {
-            return View();
+            var allExpenses = _context.Expenses.ToList();
+            return View(allExpenses);
         }
 
 
@@ -33,6 +38,9 @@ namespace SpendSmart.Controllers
 
         public IActionResult ExpenseForm(Expense model)
         {
+            _context.Expenses.Add(model);
+            _context.SaveChanges();
+
             return RedirectToAction("Expenses");
 
         }
