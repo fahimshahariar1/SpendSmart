@@ -11,7 +11,7 @@
 <form asp-action="ExpenseForm" asp-controller="Home">
 
     <label>ID</label>
-    <input class="form-control" type="number" placeholder="0" asp-for="ID"/>
+    <input hidden class="form-control" type="number" placeholder="0" asp-for="ID"/>
 
     <label class="mt-4">Amount</label>
     <input class="form-control" type="number" placeholder="0" asp-for="Value" step="1" />

@@ -8,8 +8,15 @@
     <h1 class="display-4">Expenses</h1>
 
     <br />
+    <br />
 
-    <table>
+    <hr />
+    <br />
+    <h3>Total Expense: ৳ @ViewBag.Expense</h3>
+    <br />
+
+
+    <table class="table">
 
         <thead>
 
@@ -23,6 +30,10 @@
                 <th>
                     Description
                 </th>
+                <th>
+                    Action
+                </th>
+
             </tr>
 
 
@@ -45,6 +56,14 @@
                     <td>
                     @expense.Description
                     </td>
+                    <td>
+
+                    <a asp-action="CreateEditExpense" asp-route-id="@expense.ID">Edit</a>
+                    <a asp-action="DeleteExpense" asp-route-id="@expense.ID">Delete</a>
+
+
+                    </td>
+
 
                     </tr>
                 }
